@@ -1,0 +1,37 @@
+[project]
+name = "ai-job-market-analysis"
+version = "0.1.0"
+description = "AI Job Market Analysis with CLI and dashboard"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "altair>=6.0.0",
+    "fastapi>=0.135.2",
+    "jupyter>=1.1.1",
+    "kaggle>=2.0.0",
+    "matplotlib>=3.10.8",
+    "numpy>=2.4.3",
+    "pandas>=2.2.0,<3",
+    "pyyaml>=6.0.3",
+    "scikit-learn>=1.8.0",
+    "seaborn>=0.13.2",
+    "streamlit>=1.40.0",
+    "typer>=0.24.1",
+    "uvicorn>=0.42.0",
+    "vega-datasets>=0.9.0",
+]
+
+[project.scripts]
+ai-job = "ai_job_market_analysis.cli:app"
+
+[tool.uv]
+package = true
+
+[dependency-groups]
+dev = [
+    "black>=26.3.1",
+    "pylint>=4.0.5",
+    "pyright>=1.1.408",
+    "pytest>=9.0.2",
+    "ruff>=0.15.8",
+]
