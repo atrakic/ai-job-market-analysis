@@ -24,7 +24,10 @@ async def lifespan(app: FastAPI):
             download_dataset(config["dataset"])
             logger.info("Dataset downloaded successfully.")
         except Exception as exc:
-            logger.warning("Auto-download failed: %s. Set KAGGLE_USERNAME and KAGGLE_KEY env vars.", exc)
+            logger.warning(
+                "Auto-download failed: %s. Set KAGGLE_USERNAME and KAGGLE_KEY env vars.",
+                exc,
+            )
     yield
 
 
@@ -57,6 +60,7 @@ def get_df() -> pd.DataFrame:
 # Health
 # ---------------------------------------------------------------------------
 
+
 @app.get("/health", tags=["meta"])
 def health():
     """Service liveness check."""
@@ -73,6 +77,7 @@ def info():
 # ---------------------------------------------------------------------------
 # Data
 # ---------------------------------------------------------------------------
+
 
 @app.get("/preview", tags=["data"])
 def preview(limit: int = Query(default=10, ge=1, le=500)):
@@ -92,6 +97,7 @@ def columns():
 # Analysis
 # ---------------------------------------------------------------------------
 
+
 @app.get("/salary/by-job", tags=["analysis"])
 def salary_by_job(limit: int = Query(default=20, ge=1, le=200)):
     """Average salary ranked by job title (descending)."""
@@ -100,9 +106,11 @@ def salary_by_job(limit: int = Query(default=20, ge=1, le=200)):
         result = analyze_salary(df).head(limit)
     except ValueError as e:
         raise HTTPException(status_code=422, detail=str(e)) from e
-    return result.reset_index().rename(
-        columns={result.index.name: "job_title", result.name: "avg_salary"}
-    ).to_dict(orient="records")
+    return (
+        result.reset_index()
+        .rename(columns={result.index.name: "job_title", result.name: "avg_salary"})
+        .to_dict(orient="records")
+    )
 
 
 @app.get("/jobs/top", tags=["analysis"])
@@ -132,4 +140,3 @@ def salary_distribution():
         "mean": float(s.mean()),
         "median": float(s.median()),
     }
-
