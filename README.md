@@ -33,7 +33,7 @@ Alternatively, enter them in the Streamlit dashboard when prompted.
 ## Usage
 
 ```bash
-uv run ai-job all                       # full pipeline (download → clean → analyze → plot)
+uv run ai-job all                       # full pipeline (download -> clean -> analyze -> plot)
 uv run streamlit run app.py             # interactive dashboard
 uv run uvicorn api:app --reload         # REST API (http://localhost:8000)
 ```
