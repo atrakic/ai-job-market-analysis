@@ -16,11 +16,17 @@ def get_data():
 
 
 if not csv_exists():
-    st.warning("No dataset found in `data/raw/`. Provide your Kaggle credentials to download it.")
+    st.warning(
+        "No dataset found in `data/raw/`. Provide your Kaggle credentials to download it."
+    )
 
     with st.expander("Kaggle API credentials", expanded=True):
-        kaggle_username = st.text_input("Kaggle username", value=os.environ.get("KAGGLE_USERNAME", ""))
-        kaggle_key = st.text_input("Kaggle API key", type="password", value=os.environ.get("KAGGLE_KEY", ""))
+        kaggle_username = st.text_input(
+            "Kaggle username", value=os.environ.get("KAGGLE_USERNAME", "")
+        )
+        kaggle_key = st.text_input(
+            "Kaggle API key", type="password", value=os.environ.get("KAGGLE_KEY", "")
+        )
 
         if st.button("Download dataset"):
             if not kaggle_username or not kaggle_key:

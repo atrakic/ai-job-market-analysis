@@ -1,6 +1,4 @@
 def detect_columns(df):
-    columns = [c.lower() for c in df.columns]
-
     salary_col = None
     job_col = None
 
