@@ -1,5 +1,11 @@
 # AI Job Market Analysis
 
+[![CI](https://github.com/atrakic/ai-job-market-analysis/actions/workflows/ci.yml/badge.svg)](https://github.com/atrakic/ai-job-market-analysis/actions/workflows/ci.yml)
+[![codecov](https://codecov.io/gh/atrakic/ai-job-market-analysis/branch/main/graph/badge.svg)](https://codecov.io/gh/atrakic/ai-job-market-analysis)
+[![License](https://img.shields.io/github/license/atrakic/ai-job-market-analysis)](https://img.shields.io/github/license/atrakic/ai-job-market-analysis)
+
+
+
 ## Overview
 
 This project analyzes trends in the AI job market using a Kaggle dataset:
