@@ -69,22 +69,3 @@ Interactive docs are available at `http://localhost:8000/docs` once the server i
 | GET    | `/salary/by-job?limit=20` | Average salary ranked by job title (descending) |
 | GET    | `/salary/distribution`    | Min, max, mean, and median salary               |
 | GET    | `/jobs/top?limit=10`      | Most frequent job titles                        |
-
-## Project Structure
-
-```
-app.py              # Streamlit dashboard
-api.py              # FastAPI REST API
-src/
-  ai_job_market_analysis/
-    analysis.py     # salary analysis logic
-    cli.py          # CLI entrypoint (uv run ai-job)
-    data_download.py# Kaggle dataset downloader
-    data_loader.py  # CSV loader
-    preprocessing.py# data cleaning
-    utils.py        # shared helpers
-    visualization.py# matplotlib/seaborn plots
-data/raw/           # downloaded CSV files (git-ignored)
-outputs/            # generated figures and reports
-notebooks/          # exploratory Jupyter notebooks
-```
